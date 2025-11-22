@@ -7,11 +7,12 @@ function App() {
 	const [filter, setFilter] = useState("all quotes");
 
 	useEffect(() => {
-		fetch("/api/quotes")
+		const url = `/api/quotes?max_age=${encodeURIComponent(filter)}`;
+		fetch(url)
 			.then((response) => response.json())
 			.then((data) => setQuotes(data))
 			.catch((error) => console.error("Error fetching quotes:", error));
-	}, []);
+	}, [filter]);
 	return (
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
@@ -40,9 +41,9 @@ function App() {
 				<option value="last year">Last year</option>
 			</select>
 			<div className="messages">
-				{quotes.map((quote, index) => (
+				{quotes.map((quote) => (
 					<QuoteCard
-						key={index}
+						key={`${quote.name}-${quote.time}`}
 						name={quote.name}
 						message={quote.message}
 						time={quote.time}
