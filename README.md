@@ -1,7 +1,10 @@
 # Hack at UCI Tech Organizer Deliverable
 
-# Btw pushed more commits after the 12/21 deadline to improve quality (srry)
-# Added additional feature: Notification
+Btw pushed more commits after the 12/21 deadline to improve quality (srry)
+Had problems w file directories, had to fix parent dir. and fix upstream issue hence
+weird commits where I had to delte/merge/restore directories
+
+Added additional feature: Notification
 
 Thank you for your interest in applying to the Hack at UCI Tech team!
 
