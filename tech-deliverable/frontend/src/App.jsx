@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import QuoteCard from "./QuoteCard";
 
 function App() {
 	const [quotes, setQuotes] = useState([]);
@@ -26,11 +27,15 @@ function App() {
 			</form>
 
 			<h2>Previous Quotes</h2>
-			{/* TODO: Display the actual quotes from the database */}
 			<div className="messages">
-				<p>Peter Anteater</p>
-				<p>Zot Zot Zot!</p>
-				<p>Every day</p>
+				{quotes.map((quote, index) => (
+					<QuoteCard
+						key={index}
+						name={quote.name}
+						message={quote.message}
+						time={quote.time}
+					/>
+				))}
 			</div>
 		</div>
 	);
