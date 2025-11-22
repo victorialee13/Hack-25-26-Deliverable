@@ -24,34 +24,32 @@
 
 h1 {
 	text-align: center;
-	color: white;
+	color: #FFFFFF;
 	margin-bottom: 2rem;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	font-size: 2rem;
 }
 
 h2 {
-	color: white;
+	color: #FFFFFF;
 	margin-top: 2rem;
 	margin-bottom: 1rem;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Form Styling */
 form {
-	background-color: rgba(255, 255, 255, 0.95);
+	background-color: #23304D;
 	backdrop-filter: blur(10px);
 	padding: 1.5rem;
 	border-radius: 12px;
 	margin-bottom: 2rem;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(220, 226, 239, 0.2);
 }
 
 label {
 	display: block;
 	margin-bottom: 0.5rem;
-	color: #555;
+	color: #DCE2EF;
 	font-weight: 500;
 }
 
@@ -59,21 +57,28 @@ input[type="text"] {
 	width: 100%;
 	padding: 0.75rem;
 	margin-bottom: 1rem;
-	border: 1px solid #ddd;
+	border: 1px solid rgba(220, 226, 239, 0.3);
 	border-radius: 4px;
 	font-size: 1rem;
 	box-sizing: border-box;
+	background-color: #1D2840;
+	color: #FFFFFF;
 }
 
 input[type="text"]:focus {
 	outline: none;
-	border-color: #4a90e2;
-	box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+	border-color: #667eea;
+	box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+input[type="text"]::placeholder {
+	color: rgba(229, 231, 235, 0.5);
 }
 
 button[type="submit"] {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
+	font-style: bold;
+	background: #5062b5;
+	color: #FFFFFF;
 	padding: 0.75rem 1.5rem;
 	border: none;
 	border-radius: 8px;
@@ -81,7 +86,7 @@ button[type="submit"] {
 	cursor: pointer;
 	font-weight: 500;
 	transition: all 0.3s ease;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 button[type="submit"]:hover {
@@ -99,24 +104,24 @@ label[for="filter-select"] {
 	display: inline-block;
 	margin-right: 0.5rem;
 	margin-bottom: 0;
-	color: white;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	color: #DCE2EF;
 }
 
 select {
 	padding: 0.5rem;
-	border: 1px solid #ddd;
+	border: 1px solid rgba(220, 226, 239, 0.3);
 	border-radius: 4px;
 	font-size: 1rem;
-	background-color: white;
+	background-color: #1D2840;
+	color: #FFFFFF;
 	cursor: pointer;
 	margin-bottom: 1rem;
 }
 
 select:focus {
 	outline: none;
-	border-color: #4a90e2;
-	box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+	border-color: #667eea;
+	box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
 }
 
 /* Quotes Container */
@@ -128,19 +133,20 @@ select:focus {
 
 /* QuoteCard Styling */
 .quote-card {
-	background-color: white;
-	border: 1px solid #e0e0e0;
+	background-color: #23304D;
+	border: 1px solid rgba(220, 226, 239, 0.2);
 	border-radius: 12px;
 	padding: 1.5rem;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 	transition: all 0.3s ease;
 	animation: fadeIn 0.5s ease-in;
 	position: relative;
 }
 
 .quote-card:hover {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 	transform: translateY(-2px);
+	border-color: rgba(220, 226, 239, 0.3);
 }
 
 @keyframes fadeIn {
@@ -157,12 +163,12 @@ select:focus {
 .quote-name {
 	font-weight: 600;
 	font-size: 1.1rem;
-	color: #333;
+	color: #FFFFFF;
 	margin: 0 0 0.5rem 0;
 }
 
 .quote-message {
-	color: #555;
+	color: #E5E7EB;
 	margin: 0 0 0.75rem 0;
 	line-height: 1.5;
 	word-wrap: break-word;
@@ -171,13 +177,13 @@ select:focus {
 
 .quote-mark {
 	font-size: 1.5rem;
-	color: #667eea;
+	color: #92a4f5;
 	font-weight: bold;
-	opacity: 0.6;
+	opacity: 0.8;
 }
 
 .quote-date {
-	color: #888;
+	color: #9CA3AF;
 	font-size: 0.9rem;
 	margin: 0;
 	font-style: italic;
@@ -187,13 +193,14 @@ select:focus {
 .empty-state {
 	text-align: center;
 	padding: 3rem 1rem;
-	background-color: rgba(255, 255, 255, 0.9);
+	background-color: rgba(17, 24, 39, 0.6);
 	border-radius: 12px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .empty-message {
-	color: #666;
+	color: #E5E7EB;
 	font-size: 1.1rem;
 	margin: 0;
 }
