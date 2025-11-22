@@ -36,8 +36,9 @@ h2 {
 }
 
 /* Form Styling */
+/* #2e3d5e */
 form {
-	background-color: #23304D;
+	background-color: #283757;
 	backdrop-filter: blur(10px);
 	padding: 1.5rem;
 	border-radius: 12px;
@@ -133,7 +134,7 @@ select:focus {
 
 /* QuoteCard Styling */
 .quote-card {
-	background-color: #23304D;
+	background-color: #283757;
 	border: 1px solid rgba(220, 226, 239, 0.2);
 	border-radius: 12px;
 	padding: 1.5rem;
@@ -163,12 +164,12 @@ select:focus {
 .quote-name {
 	font-weight: 600;
 	font-size: 1.1rem;
-	color: #FFFFFF;
+	color: #DCE2EF;
 	margin: 0 0 0.5rem 0;
 }
 
 .quote-message {
-	color: #E5E7EB;
+	color: #DCE2EF;
 	margin: 0 0 0.75rem 0;
 	line-height: 1.5;
 	word-wrap: break-word;
