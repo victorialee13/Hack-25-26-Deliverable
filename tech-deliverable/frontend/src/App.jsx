@@ -4,6 +4,7 @@ import QuoteCard from "./QuoteCard";
 
 function App() {
 	const [quotes, setQuotes] = useState([]);
+	const [filter, setFilter] = useState("all quotes");
 
 	useEffect(() => {
 		fetch("/api/quotes")
@@ -27,6 +28,17 @@ function App() {
 			</form>
 
 			<h2>Previous Quotes</h2>
+			<label htmlFor="filter-select">Filter by:</label>
+			<select
+				id="filter-select"
+				value={filter}
+				onChange={(e) => setFilter(e.target.value)}
+			>
+				<option value="all quotes">All time</option>
+				<option value="last week">Last week</option>
+				<option value="last month">Last month</option>
+				<option value="last year">Last year</option>
+			</select>
 			<div className="messages">
 				{quotes.map((quote, index) => (
 					<QuoteCard
