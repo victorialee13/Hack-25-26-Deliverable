@@ -3,6 +3,7 @@ import "./App.css";
 import QuoteForm from "./components/QuoteForm";
 import QuoteFilter from "./components/QuoteFilter";
 import QuoteList from "./components/QuoteList";
+import Notification from "./components/Notification";
 import { fetchQuotes, submitQuote } from "./services/quoteApi";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 	const [filter, setFilter] = useState("all quotes");
 	const [name, setName] = useState("");
 	const [message, setMessage] = useState("");
+	const [notification, setNotification] = useState(null);
 
 	useEffect(() => {
 		fetchQuotes(filter)
@@ -24,12 +26,29 @@ function App() {
 				setQuotes((prevQuotes) => [...prevQuotes, newQuote]);
 				setName("");
 				setMessage("");
+				setNotification({
+					message: "Quote added successfully!",
+					type: "success",
+				});
 			})
-			.catch((error) => console.error("Error submitting quote:", error));
+			.catch((error) => {
+				console.error("Error submitting quote:", error);
+				setNotification({
+					message: "Failed to add quote. Please try again.",
+					type: "error",
+				});
+			});
 	};
 
 	return (
 		<div className="App">
+			{notification && (
+				<Notification
+					message={notification.message}
+					type={notification.type}
+					onClose={() => setNotification(null)}
+				/>
+			)}
 			<img src="/quotebook.png" alt="Quote Book Logo" className="logo" />
 			<h1>Hack at UCI Tech Deliverable</h1>
 
