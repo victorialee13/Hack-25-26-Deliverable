@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import AsyncIterator
 
-from fastapi import FastAPI, Form, status
+from fastapi import FastAPI, Form, Query, status
 from fastapi.responses import RedirectResponse
 from typing_extensions import TypedDict
 
@@ -48,9 +48,33 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
 
 @app.get("/quotes")
-def get_quotes() -> list[Quote]:
+def get_quotes(max_age: str = Query(default="all quotes", description="Filter quotes by age: 'last week', 'last month', 'last year', or 'all quotes'")) -> list[Quote]:
     """
-    Retrieve all quotes from the database.
-    Returns a list of all quotes with name, message, time.
+    Retrieve quotes from the database, optionally filtered by age.
+    Returns a list of quotes with name, message, and time fields.
     """
-    return database["quotes"]
+    all_quotes = database["quotes"]
+    
+    if max_age == "all quotes":
+        return all_quotes
+    
+    now = datetime.now()
+    cutoff_date = None
+    
+    if max_age == "last week":
+        cutoff_date = now - timedelta(weeks=1)
+    elif max_age == "last month":
+        cutoff_date = now - timedelta(days=30)
+    elif max_age == "last year":
+        cutoff_date = now - timedelta(days=365)
+    else:
+        # Invalid max_age value, return all quotes
+        return all_quotes
+    
+    filtered_quotes = []
+    for quote in all_quotes:
+        quote_time = datetime.fromisoformat(quote["time"])
+        if quote_time >= cutoff_date:
+            filtered_quotes.append(quote)
+    
+    return filtered_quotes
