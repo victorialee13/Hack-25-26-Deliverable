@@ -1,6 +1,15 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
+	const [quotes, setQuotes] = useState([]);
+
+	useEffect(() => {
+		fetch("/api/quotes")
+			.then((response) => response.json())
+			.then((data) => setQuotes(data))
+			.catch((error) => console.error("Error fetching quotes:", error));
+	}, []);
 	return (
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
