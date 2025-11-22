@@ -4,7 +4,11 @@ function QuoteCard({ name, message, time }) {
 	return (
 		<div className="quote-card">
 			<p className="quote-name">{name}</p>
-			<p className="quote-message">{message}</p>
+			<p className="quote-message">
+				<span className="quote-mark">"</span>
+				{message}
+				<span className="quote-mark">"</span>
+			</p>
 			<p className="quote-date">{formattedDate}</p>
 		</div>
 	);
