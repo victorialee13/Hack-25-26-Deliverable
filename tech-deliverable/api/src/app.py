@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from typing import AsyncIterator
 
 from fastapi import FastAPI, Form, Query, status
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from typing_extensions import TypedDict
 
 from services.database import JSONDatabase
@@ -34,17 +34,16 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/quote")
-def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
+def post_message(name: str = Form(), message: str = Form()) -> JSONResponse:
     """
     Process a user submitting a new quote.
-    You should not modify this function except for the return value.
+    Returns the created quote as JSON.
     """
     now = datetime.now()
     quote = Quote(name=name, message=message, time=now.isoformat(timespec="seconds"))
     database["quotes"].append(quote)
 
-    # You may modify the return value as needed to support other functionality
-    return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
+    return JSONResponse(content=quote, status_code=status.HTTP_201_CREATED)
 
 
 @app.get("/quotes")
